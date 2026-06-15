@@ -72,43 +72,38 @@ export default function TheCase() {
   const [activeTab, setActiveTab] = useState<"today" | "converge">("converge");
 
   return (
-    <section className="mx-auto w-full px-6 sm:px-14 bg-canvas py-24 border-t border-mist/50 overflow-hidden">
-      <div className="converge-container mx-auto">
-        <div className="text-center mb-16">
-          <p className="font-editorial text-lg text-pine uppercase font-medium mb-4">The Case</p>
-          <h2 className="text-fluid-h2 font-display font-bold tracking-[-0.01em] text-neutral-800 max-w-4xl mx-auto">
+    <section className="mx-auto w-full px-6 sm:px-14 bg-canvas py-24 border-t border-mist/50 overflow-hidden relative">
+      <div className="absolute top-0 right-[10%] w-px h-full bg-mist/50 z-0 pointer-events-none hidden lg:block" />
+      <div className="converge-container mx-auto relative z-10">
+        <div className="mb-16 border-l-4 border-pine pl-6">
+          <p className="font-editorial text-lg text-pine uppercase tracking-widest font-bold mb-4">The Case</p>
+          <h2 className="text-fluid-h2 font-display font-bold tracking-[-0.01em] text-neutral-800 max-w-4xl uppercase">
             Manual credit analysis is an operational bottleneck.
           </h2>
-          <p className="text-fluid-p text-neutral-600 font-editorial mt-6 max-w-2xl mx-auto">
+          <p className="text-fluid-p text-neutral-600 font-editorial mt-6 max-w-2xl">
             Legacy systems record decisions; Converge builds the reasoning required
             to reach them.
           </p>
         </div>
 
-        {/* Custom Toggle Switch */}
-        <div className="flex justify-center mb-12 relative z-20">
-          <div className="bg-mist/50 p-1.5 rounded-full flex items-center border border-mist shadow-inner relative">
-            {/* Sliding Background */}
-            <div 
-              className={`absolute top-1.5 bottom-1.5 w-[calc(50%-6px)] bg-white rounded-full shadow-md transition-transform duration-500 ease-out z-0`}
-              style={{ transform: activeTab === 'converge' ? 'translateX(100%)' : 'translateX(0)' }}
-            />
-            
+        {/* Sharp Rectangular Toggle */}
+        <div className="flex mb-12 relative z-20">
+          <div className="flex border-4 border-neutral-900 bg-surface shadow-[8px_8px_0px_0px_rgba(34,32,28,1)]">
             <button
               onClick={() => setActiveTab("today")}
-              className={`relative z-10 px-6 sm:px-10 py-3 rounded-full text-sm sm:text-base font-semibold font-display transition-colors duration-300 w-40 sm:w-48 ${
-                activeTab === "today" ? "text-neutral-900" : "text-neutral-500 hover:text-neutral-700"
+              className={`px-6 sm:px-10 py-4 text-sm sm:text-base font-bold font-mono tracking-widest uppercase transition-colors duration-300 w-48 sm:w-64 border-r-4 border-neutral-900 ${
+                activeTab === "today" ? "bg-neutral-900 text-surface" : "bg-surface text-neutral-500 hover:bg-mist"
               }`}
             >
               Traditional Stack
             </button>
             <button
               onClick={() => setActiveTab("converge")}
-              className={`relative z-10 px-6 sm:px-10 py-3 rounded-full text-sm sm:text-base font-semibold font-display transition-colors duration-300 w-40 sm:w-48 flex items-center justify-center gap-2 ${
-                activeTab === "converge" ? "text-pine" : "text-neutral-500 hover:text-pine/70"
+              className={`px-6 sm:px-10 py-4 text-sm sm:text-base font-bold font-mono tracking-widest uppercase transition-colors duration-300 w-48 sm:w-64 flex items-center justify-center gap-2 ${
+                activeTab === "converge" ? "bg-pine text-canvas" : "bg-surface text-neutral-500 hover:bg-mist"
               }`}
             >
-              <span className={`w-2 h-2 rounded-full ${activeTab === 'converge' ? 'bg-pine animate-pulse' : 'bg-transparent'}`} />
+              <span className={`w-3 h-3 border-2 ${activeTab === 'converge' ? 'border-canvas bg-canvas animate-pulse' : 'border-neutral-400 bg-transparent'}`} />
               With Converge
             </button>
           </div>
@@ -118,33 +113,34 @@ export default function TheCase() {
         <div className="relative min-h-[400px]">
           {/* Today View */}
           <div className={`absolute inset-0 transition-all duration-700 ease-in-out ${activeTab === 'today' ? 'opacity-100 scale-100 z-10' : 'opacity-0 scale-95 z-0 pointer-events-none'}`}>
-            <div className="bg-surface border border-neutral-300 rounded-3xl p-8 sm:p-12 shadow-sm flex flex-col md:flex-row gap-12">
+            <div className="bg-surface border-4 border-neutral-900 p-8 sm:p-12 shadow-[16px_16px_0px_0px_rgba(34,32,28,1)] flex flex-col md:flex-row gap-12 rounded-none">
               <div className="md:w-1/3 flex flex-col justify-center">
-                <h3 className="text-3xl font-display font-bold text-neutral-800 mb-4">Why your stack can&apos;t</h3>
+                <div className="w-12 h-2 bg-error mb-6" />
+                <h3 className="text-3xl font-display font-bold text-neutral-900 mb-6 uppercase">Why your stack can&apos;t</h3>
                 <ul className="space-y-6">
-                  <li className="flex items-start gap-3">
-                    <span className="text-error mt-1">✕</span>
-                    <p className="text-sm sm:text-base text-neutral-600 font-editorial">
-                      <strong className="text-neutral-800">Your CRM & LOS store the answer.</strong> They track the pipeline and record final fields, not how the decision was formed.
+                  <li className="flex items-start gap-4">
+                    <span className="text-error font-mono font-bold text-xl leading-none">X</span>
+                    <p className="text-sm sm:text-base text-neutral-600 font-editorial border-l-2 border-mist pl-4">
+                      <strong className="text-neutral-900 uppercase text-xs tracking-wider block mb-1">Your CRM & LOS store the answer</strong> They track the pipeline and record final fields, not how the decision was formed.
                     </p>
                   </li>
-                  <li className="flex items-start gap-3">
-                    <span className="text-error mt-1">✕</span>
-                    <p className="text-sm sm:text-base text-neutral-600 font-editorial">
-                      <strong className="text-neutral-800">OCR pulls text.</strong> It tells you what a document says, not what it means for the loan.
+                  <li className="flex items-start gap-4">
+                    <span className="text-error font-mono font-bold text-xl leading-none">X</span>
+                    <p className="text-sm sm:text-base text-neutral-600 font-editorial border-l-2 border-mist pl-4">
+                      <strong className="text-neutral-900 uppercase text-xs tracking-wider block mb-1">OCR pulls text</strong> It tells you what a document says, not what it means for the loan.
                     </p>
                   </li>
                 </ul>
               </div>
-              <div className="md:w-2/3 grid grid-cols-1 sm:grid-cols-3 gap-6">
+              <div className="md:w-2/3 grid grid-cols-1 sm:grid-cols-3 gap-0 border-2 border-neutral-900 bg-neutral-900">
                 {todayMetrics.map((metric, i) => (
-                  <div key={i} className="bg-canvas border border-mist p-6 rounded-2xl flex flex-col items-start">
-                    <div className="p-3 bg-surface rounded-xl border border-mist shadow-sm mb-6">
+                  <div key={i} className="bg-canvas border border-neutral-900 p-6 flex flex-col items-start hover:bg-mist/30 transition-colors">
+                    <div className="p-3 bg-surface border-2 border-neutral-900 shadow-[4px_4px_0px_0px_rgba(34,32,28,1)] mb-6 rounded-none">
                       {metric.icon}
                     </div>
-                    <div className="font-ui text-xs font-semibold tracking-wider text-neutral-500 uppercase mb-2">{metric.label}</div>
-                    <h4 className="text-4xl font-display font-bold text-neutral-800 mb-3">{metric.title}</h4>
-                    <p className="text-sm text-neutral-600 font-editorial">{metric.description}</p>
+                    <div className="font-mono text-xs font-bold tracking-widest text-neutral-500 uppercase mb-2 border-b-2 border-mist pb-1 w-full">{metric.label}</div>
+                    <h4 className="text-4xl font-display font-bold text-neutral-900 mb-3">{metric.title}</h4>
+                    <p className="text-sm text-neutral-700 font-editorial">{metric.description}</p>
                   </div>
                 ))}
               </div>
@@ -153,35 +149,34 @@ export default function TheCase() {
 
           {/* Converge View */}
           <div className={`absolute inset-0 transition-all duration-700 ease-in-out ${activeTab === 'converge' ? 'opacity-100 scale-100 z-10' : 'opacity-0 scale-95 z-0 pointer-events-none'}`}>
-             <div className="bg-pine/5 border-2 border-pine/20 rounded-3xl p-8 sm:p-12 shadow-lg flex flex-col md:flex-row gap-12 relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-64 h-64 bg-pine/10 rounded-full blur-3xl pointer-events-none" />
-              
+             <div className="bg-pine/5 border-4 border-pine p-8 sm:p-12 shadow-[16px_16px_0px_0px_rgba(27,107,83,1)] flex flex-col md:flex-row gap-12 relative overflow-hidden rounded-none bg-grid-pattern">
               <div className="md:w-1/3 flex flex-col justify-center relative z-10">
-                <h3 className="text-3xl font-display font-bold text-pine mb-4">How Converge does it</h3>
+                <div className="w-12 h-2 bg-pine mb-6" />
+                <h3 className="text-3xl font-display font-bold text-pine mb-6 uppercase">How Converge does it</h3>
                 <ul className="space-y-6">
-                  <li className="flex items-start gap-3">
-                    <span className="text-pine mt-1">✓</span>
-                    <p className="text-sm sm:text-base text-neutral-800 font-editorial">
-                      <strong className="text-pine">Reads every document</strong> — classified, extracted, validated against source hierarchy.
+                  <li className="flex items-start gap-4">
+                    <span className="text-pine font-mono font-bold text-xl leading-none">/</span>
+                    <p className="text-sm sm:text-base text-neutral-800 font-editorial border-l-2 border-pine/30 pl-4">
+                      <strong className="text-pine uppercase text-xs tracking-wider block mb-1">Reads every document</strong> classified, extracted, validated against source hierarchy.
                     </p>
                   </li>
-                  <li className="flex items-start gap-3">
-                    <span className="text-pine mt-1">✓</span>
-                    <p className="text-sm sm:text-base text-neutral-800 font-editorial">
-                      <strong className="text-pine">Forms risk assessments</strong> — entity, guarantor, background, policy, each with severity and evidence.
+                  <li className="flex items-start gap-4">
+                    <span className="text-pine font-mono font-bold text-xl leading-none">/</span>
+                    <p className="text-sm sm:text-base text-neutral-800 font-editorial border-l-2 border-pine/30 pl-4">
+                      <strong className="text-pine uppercase text-xs tracking-wider block mb-1">Forms risk assessments</strong> entity, guarantor, background, policy, each with severity and evidence.
                     </p>
                   </li>
                 </ul>
               </div>
-              <div className="md:w-2/3 grid grid-cols-1 sm:grid-cols-3 gap-6 relative z-10">
+              <div className="md:w-2/3 grid grid-cols-1 sm:grid-cols-3 gap-0 border-2 border-pine bg-pine relative z-10">
                 {convergeMetrics.map((metric, i) => (
-                  <div key={i} className="bg-surface border-2 border-pine/10 p-6 rounded-2xl flex flex-col items-start hover:border-pine/30 transition-colors shadow-sm">
-                    <div className="p-3 bg-pine/10 rounded-xl mb-6">
+                  <div key={i} className="bg-surface border border-pine p-6 flex flex-col items-start hover:bg-pine/5 transition-colors">
+                    <div className="p-3 bg-pine border-2 border-pine shadow-[4px_4px_0px_0px_rgba(27,107,83,0.5)] mb-6 text-canvas rounded-none">
                       {metric.icon}
                     </div>
-                    <div className="font-ui text-xs font-semibold tracking-wider text-pine/80 uppercase mb-2">{metric.label}</div>
+                    <div className="font-mono text-xs font-bold tracking-widest text-pine uppercase mb-2 border-b-2 border-pine/20 pb-1 w-full">{metric.label}</div>
                     <h4 className="text-4xl font-display font-bold text-pine mb-3">{metric.title}</h4>
-                    <p className="text-sm text-neutral-700 font-editorial">{metric.description}</p>
+                    <p className="text-sm text-neutral-800 font-editorial">{metric.description}</p>
                   </div>
                 ))}
               </div>

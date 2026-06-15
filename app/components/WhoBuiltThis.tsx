@@ -27,13 +27,13 @@ const members = [
 
 export default function WhoBuiltThis() {
   return (
-    <section className="mx-auto w-full px-6 sm:px-14 bg-canvas py-24 border-t border-mist/50">
+    <section className="mx-auto w-full px-6 sm:px-14 bg-canvas py-24 border-t-4 border-neutral-900 bg-grid-pattern relative">
       <div className="converge-container mx-auto">
-        <div className="text-center mb-16">
-          <p className="font-editorial text-lg text-pine uppercase font-medium mb-4">
+        <div className="text-center mb-16 max-w-4xl mx-auto">
+          <p className="font-editorial text-lg text-pine uppercase font-bold tracking-widest mb-4 border-b-2 border-pine inline-block pb-1">
             Who built This
           </p>
-          <h2 className="text-fluid-h2 font-display font-bold tracking-[-0.01em] text-neutral-800 max-w-4xl mx-auto">
+          <h2 className="text-fluid-h2 font-display font-bold tracking-[-0.01em] text-neutral-800 uppercase mt-4">
             Lending expertise, institutional backing.
           </h2>
           <p className="text-fluid-p text-neutral-600 font-editorial mt-6 max-w-2xl mx-auto">
@@ -41,69 +41,77 @@ export default function WhoBuiltThis() {
           </p>
         </div>
 
-        {/* Team Members Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-6xl mx-auto">
-          {members.map((member) => (
-            <div key={member.id} className="group relative bg-surface border border-mist rounded-3xl overflow-hidden hover:shadow-xl transition-all duration-500 hover:-translate-y-2">
+        {/* Team Members Grid - Geometric */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-0 w-full max-w-6xl mx-auto border-4 border-neutral-900 shadow-[16px_16px_0px_0px_rgba(34,32,28,1)] bg-neutral-900">
+          {members.map((member, index) => (
+            <div key={member.id} className={`group relative bg-surface overflow-hidden ${index !== 2 ? 'border-b-4 md:border-b-0 md:border-r-4' : ''} border-neutral-900`}>
               {/* Image Section */}
               <div className="relative w-full aspect-[4/5] bg-mist/30 overflow-hidden">
                 {/* Fallback pattern if image is missing */}
-                <div className="absolute inset-0 opacity-20 group-hover:scale-105 transition-transform duration-700">
+                <div className="absolute inset-0 opacity-20">
                   <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
                     <defs>
                       <pattern id="pattern" width="40" height="40" patternUnits="userSpaceOnUse">
-                        <path d="M0 40L40 0H20L0 20M40 40V20L20 40" fill="none" stroke="#1b6b53" strokeWidth="1" opacity="0.3"/>
+                        <path d="M0 40L40 0H20L0 20M40 40V20L20 40" fill="none" stroke="#1b6b53" strokeWidth="2" opacity="1"/>
                       </pattern>
                     </defs>
                     <rect width="100%" height="100%" fill="url(#pattern)" />
                   </svg>
                 </div>
                 
-                {/* Actual Image (commented out until real images are used, but structure is here) */}
+                {/* Actual Image (commented out until real images are used) */}
                 {/* <Image
                   src={member.image}
                   alt={member.name}
                   fill
-                  className="object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
+                  className="object-cover grayscale contrast-125 group-hover:grayscale-0 transition-all duration-0"
                 /> */}
                 
-                {/* Gradient Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-neutral-900/90 via-neutral-900/20 to-transparent opacity-80 group-hover:opacity-100 transition-opacity duration-300" />
+                {/* Geometric Overlay */}
+                <div className="absolute inset-0 bg-neutral-900/90 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-in-out flex flex-col justify-end p-6 border-t-4 border-pine" />
                 
-                {/* Text Content overlaying image */}
-                <div className="absolute bottom-0 left-0 w-full p-6 sm:p-8 flex flex-col justify-end transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                  <h3 className="text-2xl font-display font-bold text-white mb-1">
-                    {member.name}
-                  </h3>
-                  <p className="text-pine/90 font-display uppercase tracking-widest text-xs font-semibold mb-3">
-                    {member.role}
-                  </p>
-                  <p className="text-white/80 font-editorial text-sm leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
-                    {member.experience}
-                  </p>
+                {/* Text Content */}
+                <div className="absolute bottom-0 left-0 w-full p-6 sm:p-8 flex flex-col justify-end z-10 transition-transform duration-300 ease-in-out group-hover:-translate-y-4">
+                  <div className="bg-surface border-2 border-neutral-900 p-4 shadow-[4px_4px_0px_0px_rgba(34,32,28,1)] group-hover:bg-neutral-900 group-hover:border-pine transition-colors duration-300">
+                    <h3 className="text-xl sm:text-2xl font-display font-bold text-neutral-900 group-hover:text-canvas mb-1 uppercase tracking-wide transition-colors duration-300">
+                      {member.name}
+                    </h3>
+                    <p className="text-pine font-mono uppercase tracking-widest text-xs font-bold mb-0">
+                      {member.role}
+                    </p>
+                  </div>
+                  
+                  <div className="overflow-hidden mt-4">
+                    <p className="text-canvas font-editorial text-sm leading-relaxed transform translate-y-full opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 delay-100">
+                      {member.experience}
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
           ))}
         </div>
 
-        {/* Trusted By Section */}
-        <div className="mt-32 pt-16 border-t border-mist/50 text-center">
-          <h3 className="text-2xl font-display font-bold tracking-[-0.01em] text-neutral-800 mb-10">
+        {/* Trusted By Section - Brutalist */}
+        <div className="mt-32 pt-16 border-t-4 border-neutral-900 text-center relative">
+          {/* Decorative geometric anchor point */}
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-8 bg-canvas border-4 border-neutral-900 rotate-45" />
+
+          <h3 className="text-2xl font-display font-bold tracking-[-0.01em] text-neutral-800 mb-10 uppercase">
             Trusted by leaders across the value chain
           </h3>
           
           {/* Logo Grid */}
-          <div className="flex flex-wrap justify-center items-center gap-8 sm:gap-16 max-w-4xl mx-auto opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
+          <div className="flex flex-wrap justify-center items-center gap-8 sm:gap-12 max-w-4xl mx-auto grayscale hover:grayscale-0 transition-all duration-300">
              {[1, 2, 3, 4].map((idx) => (
-                <div key={idx} className="w-32 h-12 flex items-center justify-center bg-mist/30 rounded-lg border border-mist hover:bg-mist/50 transition-colors">
-                  <span className="font-display font-bold text-neutral-400 tracking-widest uppercase">Brand</span>
+                <div key={idx} className="w-40 h-16 flex items-center justify-center bg-mist/20 border-2 border-neutral-900 shadow-[4px_4px_0px_0px_rgba(34,32,28,1)] hover:bg-mist hover:translate-x-1 hover:-translate-y-1 hover:shadow-[6px_6px_0px_0px_rgba(27,107,83,1)] transition-all rounded-none cursor-pointer">
+                  <span className="font-mono font-bold text-neutral-500 tracking-widest uppercase">Brand</span>
                 </div>
              ))}
           </div>
           
-          <div className="mt-16">
-            <Button title="Learn more about our team" variant="secondary" />
+          <div className="mt-16 inline-block">
+            <Button title="Learn more about our team" variant="dark" />
           </div>
         </div>
       </div>
