@@ -3,7 +3,7 @@ export default function Button({ title }: { title: string }) {
     <button
       className="
           group relative overflow-hidden
-          px-6 h-11 
+          px-6 h-10 
           bg-terracotta text-neutral-100 font-medium 
           rounded-full shadow-sm
           transition-all duration-500 ease-out
