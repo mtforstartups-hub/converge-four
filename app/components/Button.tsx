@@ -7,14 +7,15 @@ export default function Button({
 }) {
   const variants = {
     primary: "bg-terracotta text-neutral-100 hover:bg-terracotta/90",
-    secondary: "border border-pine text-pine hover:bg-pine hover:text-neutral-100",
+    secondary:
+      "border border-pine text-pine hover:bg-pine hover:text-neutral-100",
   };
 
   return (
     <button
       className={`
           group relative overflow-hidden
-          px-6 h-10 
+          px-6 h-11 
           ${variants[variant]}
           font-medium 
           rounded-full shadow-sm

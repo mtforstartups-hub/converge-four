@@ -27,7 +27,7 @@ export default function Header() {
   }, []);
   return (
     <header
-      className={`converge-container mx-auto w-full px-14 fixed top-0 left-0 z-50 transition-all duration-300 ease-in-out ${isScrolled ? "bg-canvas shadow-md" : "bg-transparent"}`}
+      className={`converge-container mx-auto w-full px-14 fixed top-0 left-0 z-50 transition-all duration-300 ease-in-out border-b border-neutral-300 ${isScrolled ? "bg-canvas shadow-md" : "bg-transparent"}`}
     >
       <div className="flex justify-between items-center py-4">
         <Image
