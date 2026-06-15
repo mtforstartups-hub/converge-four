@@ -3,14 +3,14 @@ import Button from "./Button";
 
 export default function Hero() {
   return (
-    <section className="converge-container mx-auto w-full px-14 min-h-[90vh] flex items-center">
+    <section className="converge-container mx-auto w-full px-14 min-h-[90vh] flex items-center bg-canvas">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center w-full py-20 px-2">
         <div className="flex flex-col space-y-8 text-neutral-800">
           <h1 className="text-7xl font-bold font-display tracking-[-0.02em] leading-[1.1]">
             Intelligence infrastructure for{" "}
             <span className="text-pine">institutional lending.</span>
           </h1>
-          <p className="text-lg text-neutral-600 max-w-lg leading-relaxed font-editorial">
+          <p className="text-lg text-neutral-600 leading-relaxed font-editorial">
             Institutional loans necessitate dozens of discrete risk evaluations.
             Traditionally, these facts are manually reconciled and judged.
             Converge automates this reasoning layer, delivering structured,
@@ -23,7 +23,7 @@ export default function Hero() {
           </div>
         </div>
 
-        <div className="relative w-full aspect-16/10 max-w-3xl mx-auto">
+        <div className="relative w-full aspect-16/10 max-w-3xl justify-self-end">
           {/* Laptop SVG */}
           <svg
             viewBox="0 0 800 500"
@@ -55,14 +55,14 @@ export default function Hero() {
 
           {/* Video Container (Inside Screen) */}
           <div className="absolute top-[6.5%] left-[9.5%] w-[81%] h-[80.5%] overflow-hidden bg-neutral-900 rounded-sm">
-            <video
+            {/* <video
               src="/video.mp4"
               autoPlay
               muted
               loop
               playsInline
               className="w-full h-full object-cover"
-            />
+            /> */}
           </div>
         </div>
       </div>
