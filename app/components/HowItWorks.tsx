@@ -91,11 +91,11 @@ const cardsData = [
 export default function HowItWorks() {
   return (
     <div className="converge-container mx-auto w-full px-14 bg-surface py-20">
-      <p className="font-editorial text-sm text-pine">HOW IT WORKS</p>
+      <p className="font-editorial text-lg text-pine">HOW IT WORKS</p>
       <h2 className="text-[40px] font-display font-bold tracking-[-0.01em] text-neutral-800">
         Four layers of defensible intelligence.
       </h2>
-      <p className="text-neutral-500 font-editorial text-lg mb-12">
+      <p className="text-neutral-800 font-editorial text-lg mb-12">
         Converge mirrors the cognitive workflow of the credit analyst, ensuring
         every conclusion remains anchored to its source.
       </p>
@@ -108,7 +108,7 @@ export default function HowItWorks() {
           return (
             <div
               key={card.id}
-              className="group relative overflow-hidden border border-neutral-600 p-8 flex flex-col min-h-60 cursor-pointer"
+              className="group relative overflow-hidden border border-neutral-600 p-4 flex flex-col cursor-pointer text-center"
             >
               {/* Background Color Slide Transition */}
               <div
@@ -116,7 +116,7 @@ export default function HowItWorks() {
               ></div>
 
               {/* Content Container */}
-              <div className="relative z-10 flex flex-col h-full">
+              <div className="relative z-10 flex flex-col h-full justify-center items-center">
                 {/* Header: Icons */}
                 <div className="flex justify-between items-start mb-5">
                   <div
@@ -130,7 +130,7 @@ export default function HowItWorks() {
                   </div>
 
                   {/* Top Right Plus Icon fades out on hover */}
-                  <div className="opacity-100 group-hover:opacity-0 transition-opacity duration-300">
+                  {/* <div className="opacity-100 group-hover:opacity-0 transition-opacity duration-300">
                     <svg
                       fill="none"
                       viewBox="0 0 24 24"
@@ -144,13 +144,13 @@ export default function HowItWorks() {
                         d="M12 4.5v15m7.5-7.5h-15"
                       />
                     </svg>
-                  </div>
+                  </div> */}
                 </div>
 
                 {/* Body: Title and Description */}
                 <div className="mt-2">
                   <h3
-                    className={`text-[22px] tracking-normal font-display mb-3 transition-colors duration-300 ${
+                    className={`text-2xl font-bold tracking-normal font-display mb-3 transition-colors duration-300 ${
                       isDarkBg
                         ? "text-pine group-hover:text-white"
                         : "text-pine"
@@ -159,7 +159,7 @@ export default function HowItWorks() {
                     {card.title}
                   </h3>
                   <p
-                    className={`text-sm leading-relaxed font-editorial transition-colors duration-300 ${
+                    className={`text-lg leading-relaxed font-editorial transition-colors duration-300 ${
                       isDarkBg
                         ? "text-neutral-600 group-hover:text-white"
                         : "text-neutral-600 group-hover:text-neutral-800"

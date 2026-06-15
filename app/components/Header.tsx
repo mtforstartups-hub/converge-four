@@ -45,7 +45,7 @@ export default function Header() {
           </ul>
         </nav>
 
-        <Button title="Book a Demo" />
+        <Button title="Talk to Us" />
       </div>
     </header>
   );

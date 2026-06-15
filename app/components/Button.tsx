@@ -18,7 +18,7 @@ export default function Button({
           px-6 h-11 
           ${variants[variant]}
           font-medium 
-          rounded-full shadow-sm
+          shadow-sm
           transition-all duration-500 ease-out
           hover:shadow-lg
           active:scale-95 active:shadow-sm font-sans tracking-[0.02em] text-xl
