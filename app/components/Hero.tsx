@@ -13,7 +13,7 @@ export default function Hero() {
 
           <div className="flex space-x-8">
             <Button title="Talk to us" />
-            <Button title="Research and thesis" />
+            <Button title="Research and thesis" variant="secondary" />
           </div>
         </div>
         <div>Right</div>
