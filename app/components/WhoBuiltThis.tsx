@@ -4,87 +4,109 @@ import Button from "./Button";
 const members = [
   {
     id: 1,
-    title: "Gaurav Budhrani",
-    designation: "Co-founder & CEO",
-    experience: "15+ years of capital markets and operating experience",
+    name: "Gaurav Budhrani",
+    role: "Co-founder & CEO",
+    experience: "15+ years of capital markets and operating experience.",
+    image: "/person-placeholder.png"
   },
   {
     id: 2,
-    title: "Omar Hussein",
-    designation: "Co-Founder & CSO",
-    experience: "15+ years of lending & operating experience",
+    name: "Omar Hussein",
+    role: "Co-Founder & CSO",
+    experience: "15+ years of lending & operating experience.",
+    image: "/person-placeholder.png"
   },
   {
     id: 3,
-    title: "Anatolii Stadnichuk",
-    designation: "Founding Engineer",
-    experience:
-      "15+ years of software engineering in FinTech and Cybersecurity",
+    name: "Anatolii Stadnichuk",
+    role: "Founding Engineer",
+    experience: "15+ years of software engineering in FinTech and Cybersecurity.",
+    image: "/person-placeholder.png"
   },
 ];
 
 export default function WhoBuiltThis() {
   return (
-    <section className="converge-container mx-auto w-full px-14 bg-canvas py-20">
-      <p className="font-editorial text-lg text-pine uppercase">
-        Who built This
-      </p>
-      <h2 className="text-[40px] font-display font-bold tracking-[-0.01em] text-neutral-800">
-        Lending expertise, institutional backing.
-      </h2>
-      <p className="text-neutral-800 font-editorial text-lg mb-12">
-        This is the intelligence layer institutional credit has always required.
-      </p>
+    <section className="mx-auto w-full px-6 sm:px-14 bg-canvas py-24 border-t border-mist/50">
+      <div className="converge-container mx-auto">
+        <div className="text-center mb-16">
+          <p className="font-editorial text-lg text-pine uppercase font-medium mb-4">
+            Who built This
+          </p>
+          <h2 className="text-fluid-h2 font-display font-bold tracking-[-0.01em] text-neutral-800 max-w-4xl mx-auto">
+            Lending expertise, institutional backing.
+          </h2>
+          <p className="text-fluid-p text-neutral-600 font-editorial mt-6 max-w-2xl mx-auto">
+            This is the intelligence layer institutional credit has always required, built by operators who lived the problem.
+          </p>
+        </div>
 
-      {/* Team members */}
-      {/* Changed to CSS Grid: grid-cols-1 on mobile, grid-cols-3 on md screens */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full">
-        {members.map((member) => (
-          // Added h-full to the card wrapper so they all stretch to the tallest card's height
-          <div key={member.id} className="flex flex-col h-full">
-            {/* Added flex-1 to this inner div to push the dark "BRAND" footer to the bottom evenly */}
-            <div className="flex flex-col md:flex-row space-x-0 md:space-x-4 space-y-4 md:space-y-0 bg-surface p-4 flex-1">
-              <Image
-                src="/person-placeholder.png"
-                alt="Team Member"
-                width={120}
-                height={120}
-                className="object-contain self-start"
-              />
-              <div className="flex flex-col gap-2 justify-center">
-                <div className="border-b-2 border-neutral-900 max-w-fit">
-                  <h3 className="text-xl font-display uppercase text-pine">
-                    {member.title}
-                  </h3>
+        {/* Team Members Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-6xl mx-auto">
+          {members.map((member) => (
+            <div key={member.id} className="group relative bg-surface border border-mist rounded-3xl overflow-hidden hover:shadow-xl transition-all duration-500 hover:-translate-y-2">
+              {/* Image Section */}
+              <div className="relative w-full aspect-[4/5] bg-mist/30 overflow-hidden">
+                {/* Fallback pattern if image is missing */}
+                <div className="absolute inset-0 opacity-20 group-hover:scale-105 transition-transform duration-700">
+                  <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                    <defs>
+                      <pattern id="pattern" width="40" height="40" patternUnits="userSpaceOnUse">
+                        <path d="M0 40L40 0H20L0 20M40 40V20L20 40" fill="none" stroke="#1b6b53" strokeWidth="1" opacity="0.3"/>
+                      </pattern>
+                    </defs>
+                    <rect width="100%" height="100%" fill="url(#pattern)" />
+                  </svg>
                 </div>
-                <p>{member.designation}</p>
-                <p>{member.experience}</p>
+                
+                {/* Actual Image (commented out until real images are used, but structure is here) */}
+                {/* <Image
+                  src={member.image}
+                  alt={member.name}
+                  fill
+                  className="object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
+                /> */}
+                
+                {/* Gradient Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-neutral-900/90 via-neutral-900/20 to-transparent opacity-80 group-hover:opacity-100 transition-opacity duration-300" />
+                
+                {/* Text Content overlaying image */}
+                <div className="absolute bottom-0 left-0 w-full p-6 sm:p-8 flex flex-col justify-end transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                  <h3 className="text-2xl font-display font-bold text-white mb-1">
+                    {member.name}
+                  </h3>
+                  <p className="text-pine/90 font-display uppercase tracking-widest text-xs font-semibold mb-3">
+                    {member.role}
+                  </p>
+                  <p className="text-white/80 font-editorial text-sm leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
+                    {member.experience}
+                  </p>
+                </div>
               </div>
             </div>
-
-            {/* Footer remains at the bottom */}
-            <div className="bg-pine text-white flex flex-row p-4 space-x-4 justify-between mt-auto">
-              {Array(4)
-                .fill("BRAND")
-                .map((brand, idx) => (
-                  <div key={idx}> {brand}</div>
-                ))}
-            </div>
-          </div>
-        ))}
-      </div>
-
-      <div className="text-[40px] font-display font-bold tracking-[-0.01em] text-neutral-800 mt-12 mb-4">
-        Trusted by leaders across the value chain
-      </div>
-      <div className="bg-surface w-full grid grid-cols-5 gap-6 p-4 mb-10">
-        {Array(4)
-          .fill("BRAND")
-          .map((brand, idx) => (
-            <div key={idx}> {brand}</div>
           ))}
+        </div>
+
+        {/* Trusted By Section */}
+        <div className="mt-32 pt-16 border-t border-mist/50 text-center">
+          <h3 className="text-2xl font-display font-bold tracking-[-0.01em] text-neutral-800 mb-10">
+            Trusted by leaders across the value chain
+          </h3>
+          
+          {/* Logo Grid */}
+          <div className="flex flex-wrap justify-center items-center gap-8 sm:gap-16 max-w-4xl mx-auto opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
+             {[1, 2, 3, 4].map((idx) => (
+                <div key={idx} className="w-32 h-12 flex items-center justify-center bg-mist/30 rounded-lg border border-mist hover:bg-mist/50 transition-colors">
+                  <span className="font-display font-bold text-neutral-400 tracking-widest uppercase">Brand</span>
+                </div>
+             ))}
+          </div>
+          
+          <div className="mt-16">
+            <Button title="Learn more about our team" variant="secondary" />
+          </div>
+        </div>
       </div>
-      <Button title="Know More" />
     </section>
   );
 }
