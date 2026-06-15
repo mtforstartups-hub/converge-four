@@ -3,6 +3,7 @@ import { DM_Sans, IBM_Plex_Mono } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
 import Header from "./components/Header";
+import Footer from "./components/Footer";
 
 // 1. Local Fonts
 const nhgDisplay = localFont({
@@ -73,6 +74,7 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col">
         <Header />
         <main>{children}</main>
+        <Footer />
       </body>
     </html>
   );
