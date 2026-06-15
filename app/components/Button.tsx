@@ -3,12 +3,15 @@ export default function Button({
   variant = "primary",
 }: {
   title: string;
-  variant?: "primary" | "secondary";
+  // 1. Added "dark" to the allowed variant types
+  variant?: "primary" | "secondary" | "dark";
 }) {
   const variants = {
     primary: "bg-terracotta text-neutral-100 hover:bg-terracotta/90",
     secondary:
       "border border-pine text-pine hover:bg-pine hover:text-neutral-100",
+    // 2. Added the dark variant with your exact requested classes
+    dark: "border border-surface text-surface hover:bg-surface hover:text-neutral-900",
   };
 
   return (

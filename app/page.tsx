@@ -1,3 +1,4 @@
+import BottomCta from "./components/BottomCta";
 import Hero from "./components/Hero";
 import FeatureCards from "./components/HowItWorks";
 import Proof from "./components/Proof";
@@ -12,6 +13,7 @@ export default function Home() {
       <TheCase />
       <Proof />
       <WhoBuiltThis />
+      <BottomCta />
     </>
   );
 }
