@@ -25,7 +25,7 @@ const members = [
 
 export default function WhoBuiltThis() {
   return (
-    <section className="converge-container mx-auto w-full px-14 bg-canvas py-20">
+    <section className="converge-container mx-auto w-full px-14 bg-canvas py-20 neon-divider">
       <p className="font-editorial text-lg text-pine uppercase">
         Who built This
       </p>

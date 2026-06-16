@@ -34,3 +34,61 @@
 .converge-container {
   max-width: clamp(992px, 100vw, 1920px);
 }
+
+.neon-divider {
+  position: relative;
+}
+
+.neon-divider::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg,
+      rgba(216, 90, 46, 0.1) 0%,
+      #d85a2e 20%,
+      #f4a26e 40%,
+      #ffcb8f 50%,
+      #f4a26e 60%,
+      #d85a2e 80%,
+      rgba(216, 90, 46, 0.1) 100%);
+  background-size: 200% 100%;
+  animation: goldenFlow 8s linear infinite;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.neon-divider::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg,
+      rgba(216, 90, 46, 0.1) 0%,
+      #d85a2e 20%,
+      #f4a26e 40%,
+      #ffcb8f 50%,
+      #f4a26e 60%,
+      #d85a2e 80%,
+      rgba(216, 90, 46, 0.1) 100%);
+  background-size: 200% 100%;
+  animation: goldenFlow 8s linear infinite;
+  pointer-events: none;
+  z-index: 2;
+  filter: blur(6px);
+  opacity: 0.8;
+}
+
+@keyframes goldenFlow {
+  0% {
+    background-position: 0% 0%;
+  }
+
+  100% {
+    background-position: 220% 0%;
+  }
+}
