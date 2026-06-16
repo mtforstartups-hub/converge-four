@@ -25,25 +25,25 @@ const members = [
 
 export default function WhoBuiltThis() {
   return (
-    <section className="converge-container mx-auto w-full px-14 bg-canvas py-20 neon-divider">
+    <section className="converge-container mx-auto w-full px-14 bg-canvas py-32 neon-divider">
       <p className="font-editorial text-lg text-pine uppercase">
         Who built This
       </p>
       <h2 className="text-[40px] font-display font-bold tracking-[-0.01em] text-neutral-800">
         Lending expertise, institutional backing.
       </h2>
-      <p className="text-neutral-800 font-editorial text-lg mb-12">
+      <p className="text-neutral-800 font-editorial text-lg mb-20">
         This is the intelligence layer institutional credit has always required.
       </p>
 
       {/* Team members */}
       {/* Changed to CSS Grid: grid-cols-1 on mobile, grid-cols-3 on md screens */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-12 w-full">
         {members.map((member) => (
           // Added h-full to the card wrapper so they all stretch to the tallest card's height
           <div key={member.id} className="flex flex-col h-full">
             {/* Added flex-1 to this inner div to push the dark "BRAND" footer to the bottom evenly */}
-            <div className="flex flex-col md:flex-row space-x-0 md:space-x-4 space-y-4 md:space-y-0 bg-surface p-4 flex-1">
+            <div className="flex flex-col md:flex-row space-x-0 md:space-x-4 space-y-4 md:space-y-0 bg-surface p-8 flex-1">
               <Image
                 src="/person-placeholder.png"
                 alt="Team Member"
@@ -74,10 +74,10 @@ export default function WhoBuiltThis() {
         ))}
       </div>
 
-      <div className="text-[40px] font-display font-bold tracking-[-0.01em] text-neutral-800 mt-12 mb-4">
+      <div className="text-[40px] font-display font-bold tracking-[-0.01em] text-neutral-800 mt-24 mb-12">
         Trusted by leaders across the value chain
       </div>
-      <div className="bg-surface w-full grid grid-cols-5 gap-6 p-4 mb-10">
+      <div className="bg-surface w-full grid grid-cols-5 gap-12 p-8 mb-16">
         {Array(4)
           .fill("BRAND")
           .map((brand, idx) => (
