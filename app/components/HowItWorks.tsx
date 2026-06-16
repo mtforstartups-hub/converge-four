@@ -1,4 +1,6 @@
-import React from "react";
+"use client";
+
+import React, { useState, useEffect, useRef } from "react";
 import Button from "./Button";
 import {
   Database,
@@ -40,6 +42,31 @@ const cardsData = [
 ];
 
 export default function HowItWorks() {
+  const [activeCard, setActiveCard] = useState<number | null>(null);
+  const cardsContainerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent | TouchEvent) => {
+      if (
+        cardsContainerRef.current &&
+        !cardsContainerRef.current.contains(event.target as Node)
+      ) {
+        setActiveCard(null);
+        if (document.activeElement instanceof HTMLElement) {
+          document.activeElement.blur();
+        }
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener("touchstart", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("touchstart", handleClickOutside);
+    };
+  }, []);
+
   return (
     <div className="converge-container mx-auto w-full px-6 md:px-14 bg-surface py-16 md:py-24 neon-divider">
       <p className="font-editorial text-base md:text-lg text-pine uppercase tracking-wider">
@@ -53,30 +80,34 @@ export default function HowItWorks() {
         every conclusion remains anchored to its source.
       </p>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div 
+        ref={cardsContainerRef}
+        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
+      >
         {cardsData.map((card) => {
-          // Check if the current card has the dark background for conditional hover states
           const isDarkBg = card.bgColor === "bg-pine";
+          const isActive = activeCard === card.id;
 
           return (
             <div
               key={card.id}
-              className="group relative overflow-hidden border border-neutral-300 hover:border-neutral-500 p-5 md:p-6 flex flex-col cursor-pointer text-center transition-all duration-300"
+              role="button"
+              tabIndex={0}
+              onClick={() => setActiveCard(isActive ? null : card.id)}
+              className={`group relative overflow-hidden border border-neutral-300 hover:border-neutral-500 p-5 md:p-6 flex flex-col cursor-pointer text-center transition-all duration-300 outline-none ${isActive ? "is-active border-neutral-500" : ""}`}
             >
               {/* Background Color Slide Transition */}
               <div
-                className={`absolute inset-0 ${card.bgColor} translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out z-0`}
+                className={`absolute inset-0 ${card.bgColor} translate-y-full group-hover:translate-y-0 group-[.is-active]:translate-y-0 transition-transform duration-500 ease-out z-0`}
               ></div>
 
               {/* Content Container */}
-              <div className="relative z-10 flex flex-col h-full justify-center items-center w-full">
+              <div className="relative z-10 flex flex-col h-full justify-center items-center w-full pointer-events-none">
                 {/* Header: Icons */}
                 <div className="flex justify-center items-start mb-3">
                   <div
-                    className={`transition-colors duration-300 ${
-                      isDarkBg
-                        ? "text-neutral-800 group-hover:text-white"
-                        : "text-neutral-800 group-hover:text-pine"
+                    className={`transition-colors duration-300 text-neutral-800 ${
+                      isDarkBg ? "group-hover:text-white group-[.is-active]:text-white" : "group-hover:text-pine group-[.is-active]:text-pine"
                     }`}
                   >
                     {card.icon}
@@ -87,18 +118,14 @@ export default function HowItWorks() {
                 <div className="mt-2">
                   <h3
                     className={`text-xl md:text-3xl font-bold tracking-normal font-display mb-1.5 transition-colors duration-300 ${
-                      isDarkBg
-                        ? "text-pine group-hover:text-white"
-                        : "text-pine"
+                      isDarkBg ? "text-pine group-hover:text-white group-[.is-active]:text-white" : "text-pine"
                     }`}
                   >
                     {card.title}
                   </h3>
                   <p
-                    className={`text-sm md:text-base leading-relaxed font-editorial transition-colors duration-300 ${
-                      isDarkBg
-                        ? "text-neutral-600 group-hover:text-neutral-300"
-                        : "text-neutral-600 group-hover:text-neutral-800"
+                    className={`text-sm md:text-base leading-relaxed font-editorial transition-colors duration-300 text-neutral-600 ${
+                      isDarkBg ? "group-hover:text-neutral-300 group-[.is-active]:text-neutral-300" : "group-hover:text-neutral-800 group-[.is-active]:text-neutral-800"
                     }`}
                   >
                     {card.description}
@@ -106,14 +133,14 @@ export default function HowItWorks() {
                 </div>
 
                 {/* Footer: Learn More Link */}
-                <div className="mt-3 opacity-100 md:opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <div className="mt-3 opacity-0 group-hover:opacity-100 group-[.is-active]:opacity-100 transition-opacity duration-300">
                   <span
                     className={`font-semibold inline-flex items-center text-sm ${
                       isDarkBg ? "text-white" : "text-black"
                     }`}
                   >
                     Learn More
-                    <ArrowRight className="w-4 h-4 ml-1 transition-transform duration-300 group-hover:translate-x-1" />
+                    <ArrowRight className="w-4 h-4 ml-1 transition-transform duration-300 group-hover:translate-x-1 group-[.is-active]:translate-x-1" />
                   </span>
                 </div>
               </div>
