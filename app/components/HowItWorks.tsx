@@ -90,7 +90,7 @@ const cardsData = [
 
 export default function HowItWorks() {
   return (
-    <div className="converge-container mx-auto w-full px-14 bg-surface py-20">
+    <div className="converge-container mx-auto w-full px-14 bg-surface py-20 neon-divider">
       <p className="font-editorial text-lg text-pine">HOW IT WORKS</p>
       <h2 className="text-[40px] font-display font-bold tracking-[-0.01em] text-neutral-800">
         Four layers of defensible intelligence.

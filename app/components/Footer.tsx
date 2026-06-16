@@ -5,7 +5,7 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="converge-container bg-canvas text-neutral-900 pt-20 pb-8 px-14 font-editorial">
+    <footer className="converge-container bg-canvas text-neutral-900 pt-20 pb-8 px-14 font-editorial neon-divider">
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6 w-full border-b border-neutral-300 pb-6">
         <div className="flex flex-col gap-4">
           <Image src="/logo.svg" alt="Converge Logo" width={250} height={120} />

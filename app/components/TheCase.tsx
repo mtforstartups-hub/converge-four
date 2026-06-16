@@ -90,7 +90,7 @@ export default function TheCase() {
     return () => clearInterval(timer);
   }, []);
   return (
-    <section className="converge-container mx-auto w-full px-14 bg-canvas py-20">
+    <section className="converge-container mx-auto w-full px-14 bg-canvas py-20 neon-divider">
       <p className="font-editorial text-lg text-pine uppercase">The Case</p>
       <h2 className="text-[40px] font-display font-bold tracking-[-0.01em] text-neutral-800">
         Manual credit analysis is an operational bottleneck.
