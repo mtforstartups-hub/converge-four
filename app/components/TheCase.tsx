@@ -82,15 +82,22 @@ const convergeMetrics = [
 
 export default function TheCase() {
   const [activeMetric, setActiveMetric] = useState(0);
+  const [isHovered, setIsHovered] = useState(false);
 
   useEffect(() => {
+    if (isHovered) return;
+
     const timer = setInterval(() => {
       setActiveMetric((prev) => (prev + 1) % 3);
-    }, 5000);
+    }, 2000);
     return () => clearInterval(timer);
-  }, []);
+  }, [isHovered]);
   return (
-    <section className="converge-container mx-auto w-full px-6 md:px-14 bg-canvas py-16 md:py-24 neon-divider">
+    <section
+      className="converge-container mx-auto w-full px-6 md:px-14 bg-canvas py-16 md:py-24 neon-divider"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
       <p className="font-editorial text-base md:text-lg text-pine uppercase tracking-wider">
         The Case
       </p>
