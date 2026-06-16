@@ -1,9 +1,9 @@
-import React from "react";
+import Image from "next/image";
 import Button from "./Button";
 
 export default function Hero() {
   return (
-    <section className="converge-container mx-auto w-full px-6 md:px-14 min-h-[650px] md:min-h-[750px] lg:min-h-[800px] xl:min-h-[950px] flex items-center bg-canvas relative overflow-hidden">
+    <section className="converge-container mx-auto w-full px-6 md:px-14 min-h-162.5 md:min-h-187.5 lg:min-h-200 xl:min-h-237.5 flex items-center bg-canvas relative overflow-hidden">
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12 items-center w-full pt-28 pb-16 md:pt-36 md:pb-24 lg:py-20 px-2 relative z-10">
         <div className="flex flex-col space-y-8 text-neutral-800 col-span-2">
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold font-display tracking-[-0.02em] leading-[1.1]">
@@ -23,48 +23,15 @@ export default function Hero() {
           </div>
         </div>
 
-        <div className="relative w-full aspect-16/10 max-w-lg md:max-w-2xl lg:max-w-none justify-self-start lg:justify-self-end lg:absolute lg:left-[70%] lg:top-1/2 lg:-translate-y-1/2 lg:w-200">
-
+        <div className="relative w-full aspect-16/10 max-w-lg md:max-w-2xl lg:max-w-none justify-self-start lg:justify-self-end lg:absolute left-[-10%] lg:left-[70%] lg:top-1/2 lg:-translate-y-1/2 lg:w-200">
           {/* Laptop SVG */}
-          <svg
-            viewBox="0 0 800 500"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            className="w-full h-full drop-shadow-2xl"
-          >
-            {/* Screen Border */}
-            <rect
-              x="50"
-              y="20"
-              width="700"
-              height="440"
-              rx="20"
-              fill="#222"
-              stroke="#444"
-              strokeWidth="2"
-            />
-            {/* Camera */}
-            <circle cx="400" cy="35" r="3" fill="#333" />
-            {/* Base */}
-            <path
-              d="M20 460H780L760 485C755 490 750 492 740 492H60C50 492 45 490 40 485L20 460Z"
-              fill="#333"
-            />
-            {/* Base Detail */}
-            <rect x="360" y="460" width="80" height="8" rx="4" fill="#111" />
-          </svg>
-
-          {/* Video Container (Inside Screen) */}
-          <div className="absolute top-[6.5%] left-[9.5%] w-[81%] h-[80.5%] overflow-hidden bg-neutral-900 rounded-sm">
-            {/* <video
-              src="/video.mp4"
-              autoPlay
-              muted
-              loop
-              playsInline
-              className="w-full h-full object-cover"
-            /> */}
-          </div>
+          <Image
+            src="/LaptopHero.svg"
+            alt="Laptop Asset Hero"
+            width={700}
+            height={550}
+            priority
+          />
         </div>
       </div>
     </section>
