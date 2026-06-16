@@ -40,35 +40,61 @@ export default function WhoBuiltThis() {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12 w-full">
         {members.map((member) => (
           // Added h-full to the card wrapper so they all stretch to the tallest card's height
-          <div key={member.id} className="flex flex-col h-full border border-neutral-200 bg-surface hover:shadow-md transition-shadow duration-300">
-            {/* Stacks vertically with centered elements for a premium layout */}
-            <div className="flex flex-col items-center text-center p-6 md:p-8 flex-1">
-              <div className="relative w-24 h-24 sm:w-28 sm:h-28 mb-6 overflow-hidden rounded-full border-2 border-pine/10 bg-neutral-50 flex-shrink-0">
-                <Image
-                  src="/person-placeholder.png"
-                  alt="Team Member"
-                  fill
-                  className="object-cover"
-                />
+          <div key={member.id} className="group relative flex flex-col h-full border border-neutral-200 bg-surface cursor-pointer overflow-hidden transition-shadow duration-300 hover:shadow-lg">
+            
+            {/* ---------------- MOBILE LAYOUT (Always Visible on < md) ---------------- */}
+            <div className="flex md:hidden flex-col items-center text-center p-6 flex-1">
+              <div className="relative w-24 h-24 mb-4 overflow-hidden rounded-full border-2 border-pine/10 bg-neutral-50 flex-shrink-0">
+                <Image src="/person-placeholder.png" alt="Team Member" fill className="object-cover" />
               </div>
-              <div className="flex flex-col gap-2 items-center w-full">
-                <div className="border-b-2 border-neutral-900 pb-1 max-w-fit mb-1">
-                  <h3 className="text-lg sm:text-xl font-display font-bold uppercase text-pine">
+              <div className="flex flex-col items-center w-full">
+                <div className="border-b-2 border-neutral-900 pb-1 max-w-fit mb-2">
+                  <h3 className="text-lg font-display font-bold uppercase text-pine">
                     {member.title}
                   </h3>
                 </div>
                 <p className="text-sm font-semibold text-neutral-800">{member.designation}</p>
-                <p className="text-xs sm:text-sm text-neutral-600 leading-relaxed mt-2">{member.experience}</p>
+                <p className="text-xs text-neutral-600 leading-relaxed mt-2">{member.experience}</p>
+              </div>
+            </div>
+            
+            <div className="flex md:hidden bg-pine text-white grid grid-cols-4 gap-1 p-3 text-center text-[10px] uppercase tracking-wider font-bold mt-auto">
+              {Array(4).fill("BRAND").map((brand, idx) => <div key={idx}>{brand}</div>)}
+            </div>
+
+            {/* ---------------- DESKTOP LAYOUT (BASE) ---------------- */}
+            <div className="hidden md:flex flex-col items-center justify-center p-8 flex-1 min-h-[220px]">
+              <div className="relative w-28 h-28 mb-6 overflow-hidden rounded-full border-2 border-pine/10 bg-neutral-50 flex-shrink-0">
+                <Image src="/person-placeholder.png" alt="Team Member" fill className="object-cover" />
+              </div>
+              <div className="border-b-2 border-neutral-900 pb-1 max-w-fit">
+                <h3 className="text-xl font-display font-bold uppercase text-pine">
+                  {member.title}
+                </h3>
               </div>
             </div>
 
-            {/* Footer remains at the bottom - Grid based to prevent horizontal overflow */}
-            <div className="bg-pine text-white grid grid-cols-4 gap-1 p-3 text-center text-[10px] sm:text-xs uppercase tracking-wider font-bold mt-auto">
-              {Array(4)
-                .fill("BRAND")
-                .map((brand, idx) => (
-                  <div key={idx}>{brand}</div>
-                ))}
+            {/* ---------------- DESKTOP LAYOUT (HOVER OVERLAY) ---------------- */}
+            <div className="hidden md:flex absolute inset-0 bg-neutral-900 flex-col 
+                            [clip-path:inset(100%_0_0_0)] group-hover:[clip-path:inset(0_0_0_0)] 
+                            transition-[clip-path] duration-500 ease-out z-20">
+              <div className="flex-1 flex flex-col items-center justify-center p-6 text-center">
+                <div className="border-b-2 border-white pb-1 max-w-fit mb-3 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-75">
+                  <h3 className="text-xl font-display font-bold uppercase text-white">
+                    {member.title}
+                  </h3>
+                </div>
+                <p className="text-sm font-bold text-pine uppercase tracking-widest transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-100">
+                  {member.designation}
+                </p>
+                <p className="text-sm text-neutral-400 leading-relaxed mt-3 max-w-[220px] transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-150">
+                  {member.experience}
+                </p>
+              </div>
+
+              <div className="bg-pine text-white grid grid-cols-4 gap-1 p-3 text-center text-xs uppercase tracking-wider font-bold transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-200">
+                {Array(4).fill("BRAND").map((brand, idx) => <div key={idx}>{brand}</div>)}
+              </div>
             </div>
           </div>
         ))}
