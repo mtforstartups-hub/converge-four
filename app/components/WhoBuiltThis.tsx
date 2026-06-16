@@ -8,6 +8,13 @@ const members = [
     designation: "Co-founder & CEO",
     experience: "15+ years of capital markets and operating experience",
     imgSrc: "/teams/Gaurav.png",
+    memberBrands: [
+      "/teams/brands/goldman.svg",
+      "/teams/brands/cisco.svg",
+      "/teams/brands/Nsut.svg",
+      "/teams/brands/digitalimpact.svg",
+      "/teams/brands/primeblock.svg",
+    ],
   },
   {
     id: 2,
@@ -15,6 +22,13 @@ const members = [
     designation: "Co-Founder & CSO",
     experience: "15+ years of lending & operating experience",
     imgSrc: "/teams/Omar.png",
+    memberBrands: [
+      "/teams/brands/citi.svg",
+      "/teams/brands/insightpartners.svg",
+      "/teams/brands/stanfordbusiness.svg",
+      "/teams/brands/primeblock.svg",
+      "/teams/brands/morganstanley.svg",
+    ],
   },
   {
     id: 3,
@@ -23,6 +37,7 @@ const members = [
     experience:
       "15+ years of software engineering in FinTech and Cybersecurity",
     imgSrc: "/teams/Antoli.png",
+    memberBrands: ["/teams/brands/paloalto.svg", "/teams/brands/cider.svg"],
   },
 ];
 
@@ -59,8 +74,8 @@ export default function WhoBuiltThis() {
             <div className="flex md:hidden flex-col items-center text-center p-6 flex-1">
               <div className="relative w-24 h-24 mb-4 overflow-hidden rounded-full border-2 border-pine/10 bg-neutral-50 shrink-0">
                 <Image
-                  src="/person-placeholder.png"
-                  alt="Team Member"
+                  src={member.imgSrc}
+                  alt={member.title}
                   fill
                   className="object-cover"
                 />
@@ -80,12 +95,17 @@ export default function WhoBuiltThis() {
               </div>
             </div>
 
-            <div className="md:hidden bg-pine text-white grid grid-cols-4 gap-1 p-3 text-center text-[10px] uppercase tracking-wider font-bold mt-auto">
-              {Array(4)
-                .fill("BRAND")
-                .map((brand, idx) => (
-                  <div key={idx}>{brand}</div>
-                ))}
+            <div className="md:hidden bg-pine text-white flex flex-wrap justify-center items-center gap-4 p-4 mt-auto">
+              {member.memberBrands.map((brandSrc, idx) => (
+                <div key={idx} className="relative h-6 w-16 shrink-0">
+                  <Image
+                    src={brandSrc}
+                    alt={`brand-${idx}`}
+                    fill
+                    className="object-contain"
+                  />
+                </div>
+              ))}
             </div>
 
             {/* ---------------- DESKTOP LAYOUT (BASE) ---------------- */}
@@ -125,12 +145,17 @@ export default function WhoBuiltThis() {
                 </p>
               </div>
 
-              <div className="bg-pine text-white grid grid-cols-4 gap-1 p-3 text-center text-xs uppercase tracking-wider font-bold transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-200">
-                {Array(4)
-                  .fill("BRAND")
-                  .map((brand, idx) => (
-                    <div key={idx}>{brand}</div>
-                  ))}
+              <div className="bg-pine text-white flex flex-wrap justify-center items-center gap-4 p-4 mt-auto transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-200">
+                {member.memberBrands.map((brandSrc, idx) => (
+                  <div key={idx} className="relative h-10 w-20 shrink-0">
+                    <Image
+                      src={brandSrc}
+                      alt={`brand-${idx}`}
+                      fill
+                      className="object-contain"
+                    />
+                  </div>
+                ))}
               </div>
             </div>
           </div>
@@ -140,9 +165,18 @@ export default function WhoBuiltThis() {
       <div className="text-2xl sm:text-3xl md:text-[40px] font-display font-bold tracking-[-0.01em] text-neutral-800 mt-16 md:mt-24 mb-6 md:mb-12 leading-tight">
         Trusted by leaders across the value chain
       </div>
-      <div className="bg-surface w-full grid grid-cols-2 md:grid-cols-5 gap-6 md:gap-12 p-6 md:p-8 mb-10 md:mb-16 text-center text-neutral-400 font-bold uppercase tracking-widest text-xs sm:text-sm">
-        {brands.map((b) => (
-          <Image key={b.id} src={b.img} alt={b.alt} width={160} height={90} />
+      <div className="bg-surface w-full grid grid-cols-2 md:grid-cols-5 gap-6 p-2 md:gap-12 mb-10 md:mb-16 text-center text-neutral-400 font-bold uppercase tracking-widest text-xs sm:text-sm items-center justify-items-center">
+        {brands.map((b, index) => (
+          <Image
+            key={b.id}
+            src={b.img}
+            alt={b.alt}
+            width={160}
+            height={90}
+            className={`w-full max-w-40 h-15 md:h-22.5 object-contain ${
+              index === brands.length - 1 ? "col-span-2 md:col-span-1" : ""
+            }`}
+          />
         ))}
       </div>
       <Button title="Know More" />
