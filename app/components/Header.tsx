@@ -6,6 +6,7 @@ import Button from "./Button";
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -25,9 +26,37 @@ export default function Header() {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+
+  // Prevent background scrolling when mobile menu is open
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isMenuOpen]);
+
+  // Auto-close mobile menu when screen size increases to desktop sizes
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 768) {
+        setIsMenuOpen(false);
+      }
+    };
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   return (
     <header
-      className={`converge-container mx-auto w-full px-14 fixed top-0 left-0 z-50 transition-all duration-300 ease-in-out border-b border-neutral-300 ${isScrolled ? "bg-surface" : "bg-transparent"}`}
+      className={`converge-container mx-auto w-full px-6 md:px-14 fixed top-0 left-0 z-50 transition-all duration-300 ease-in-out border-b border-neutral-300 ${
+        isScrolled || isMenuOpen ? "bg-surface" : "bg-transparent"
+      }`}
     >
       <div className="flex justify-between items-center py-4">
         <Image
@@ -35,18 +64,86 @@ export default function Header() {
           alt="converge logo"
           width={160}
           height={90}
+          className="w-32 md:w-40 h-auto"
           priority
         />
-        <nav className="font-sans tracking-[0.02em] text-xl font-medium text-neutral-800">
-          <ul className="flex space-x-8">
-            <li>Platform </li>
-            <li>Intelligence Roles</li>
-            <li>About</li>
+        
+        {/* Desktop Navigation */}
+        <nav className="hidden md:block font-sans tracking-[0.02em] text-base lg:text-xl font-medium text-neutral-800">
+          <ul className="flex space-x-6 lg:space-x-8">
+            <li className="cursor-pointer hover:text-pine transition-colors">Platform</li>
+            <li className="cursor-pointer hover:text-pine transition-colors">Intelligence Roles</li>
+            <li className="cursor-pointer hover:text-pine transition-colors">About</li>
           </ul>
         </nav>
 
-        <Button title="Talk to Us" />
+        {/* Desktop Call to Action */}
+        <div className="hidden md:block">
+          <Button title="Talk to Us" />
+        </div>
+
+        {/* Mobile Hamburger Menu Button */}
+        <button
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          className="md:hidden flex flex-col justify-center items-center w-10 h-10 gap-1.5 focus:outline-none z-50 cursor-pointer"
+          aria-expanded={isMenuOpen}
+          aria-label="Toggle menu"
+        >
+          <span
+            className={`h-[2px] w-6 bg-neutral-800 transition-all duration-300 ease-in-out rounded-full ${
+              isMenuOpen ? "rotate-45 translate-y-[8px]" : ""
+            }`}
+          />
+          <span
+            className={`h-[2px] w-6 bg-neutral-800 transition-all duration-300 ease-in-out rounded-full ${
+              isMenuOpen ? "opacity-0 scale-x-0" : ""
+            }`}
+          />
+          <span
+            className={`h-[2px] w-6 bg-neutral-800 transition-all duration-300 ease-in-out rounded-full ${
+              isMenuOpen ? "-rotate-45 -translate-y-[8px]" : ""
+            }`}
+          />
+        </button>
+      </div>
+
+      {/* Mobile Menu Panel */}
+      <div
+        className={`absolute top-full left-0 w-full bg-surface shadow-xl transition-all duration-500 ease-in-out md:hidden overflow-hidden ${
+          isMenuOpen
+            ? "max-h-[100vh] opacity-100 visible"
+            : "max-h-0 opacity-0 invisible"
+        }`}
+      >
+        <div className="flex flex-col px-6 py-8 space-y-6">
+          <nav className="font-sans tracking-[0.02em] text-xl md:text-2xl font-medium text-neutral-800">
+            <ul className="flex flex-col space-y-6">
+              <li
+                onClick={() => setIsMenuOpen(false)}
+                className="hover:text-pine transition-colors cursor-pointer pb-2 border-b border-neutral-200"
+              >
+                Platform
+              </li>
+              <li
+                onClick={() => setIsMenuOpen(false)}
+                className="hover:text-pine transition-colors cursor-pointer pb-2 border-b border-neutral-200"
+              >
+                Intelligence Roles
+              </li>
+              <li
+                onClick={() => setIsMenuOpen(false)}
+                className="hover:text-pine transition-colors cursor-pointer pb-2 border-b border-neutral-200"
+              >
+                About
+              </li>
+            </ul>
+          </nav>
+          <div className="pt-4 flex justify-start" onClick={() => setIsMenuOpen(false)}>
+            <Button title="Talk to Us" />
+          </div>
+        </div>
       </div>
     </header>
   );
 }
+

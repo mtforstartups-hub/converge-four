@@ -3,27 +3,28 @@ import Button from "./Button";
 
 export default function Hero() {
   return (
-    <section className="converge-container mx-auto w-full px-14 min-h-[80vh] flex items-center bg-canvas relative overflow-hidden">
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 items-center w-full py-20 px-2 relative z-10">
+    <section className="converge-container mx-auto w-full px-6 md:px-14 min-h-[650px] md:min-h-[750px] lg:min-h-[800px] xl:min-h-[950px] flex items-center bg-canvas relative overflow-hidden">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12 items-center w-full pt-28 pb-16 md:pt-36 md:pb-24 lg:py-20 px-2 relative z-10">
         <div className="flex flex-col space-y-8 text-neutral-800 col-span-2">
-          <h1 className="text-7xl font-bold font-display tracking-[-0.02em] leading-[1.1]">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold font-display tracking-[-0.02em] leading-[1.1]">
             Intelligence infrastructure for{" "}
             <span className="text-pine">institutional lending.</span>
           </h1>
-          <p className="text-lg text-neutral-600 leading-relaxed font-editorial">
+          <p className="text-base md:text-lg text-neutral-600 leading-relaxed font-editorial">
             Institutional loans necessitate dozens of discrete risk evaluations.
             Traditionally, these facts are manually reconciled and judged.
             Converge automates this reasoning layer, delivering structured,
             source-verified findings ready for review.
           </p>
 
-          <div className="flex items-center gap-6">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6">
             <Button title="Talk to us" />
             <Button title="Research and thesis" variant="secondary" />
           </div>
         </div>
 
-        <div className="relative w-full aspect-16/10 max-w-3xl justify-self-end lg:absolute lg:left-[70%] lg:top-1/2 lg:-translate-y-1/2 lg:w-200 lg:max-w-none">
+        <div className="relative w-full aspect-16/10 max-w-lg md:max-w-2xl lg:max-w-none justify-self-start lg:justify-self-end lg:absolute lg:left-[70%] lg:top-1/2 lg:-translate-y-1/2 lg:w-200">
+
           {/* Laptop SVG */}
           <svg
             viewBox="0 0 800 500"

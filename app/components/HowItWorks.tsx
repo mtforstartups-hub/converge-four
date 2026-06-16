@@ -90,17 +90,17 @@ const cardsData = [
 
 export default function HowItWorks() {
   return (
-    <div className="converge-container mx-auto w-full px-14 bg-surface py-20 neon-divider">
-      <p className="font-editorial text-lg text-pine">HOW IT WORKS</p>
-      <h2 className="text-[40px] font-display font-bold tracking-[-0.01em] text-neutral-800">
+    <div className="converge-container mx-auto w-full px-6 md:px-14 bg-surface py-16 md:py-24 neon-divider">
+      <p className="font-editorial text-base md:text-lg text-pine uppercase tracking-wider">HOW IT WORKS</p>
+      <h2 className="text-3xl sm:text-4xl md:text-[40px] font-display font-bold tracking-[-0.01em] text-neutral-800 mt-2 mb-4 leading-tight">
         Four layers of defensible intelligence.
       </h2>
-      <p className="text-neutral-800 font-editorial text-lg mb-12">
+      <p className="text-neutral-800 font-editorial text-base md:text-lg mb-8 md:mb-12 max-w-3xl">
         Converge mirrors the cognitive workflow of the credit analyst, ensuring
         every conclusion remains anchored to its source.
       </p>
 
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {cardsData.map((card) => {
           // Check if the current card has the dark background for conditional hover states
           const isDarkBg = card.bgColor === "bg-neutral-900";
@@ -108,7 +108,7 @@ export default function HowItWorks() {
           return (
             <div
               key={card.id}
-              className="group relative overflow-hidden border border-neutral-600 p-4 flex flex-col cursor-pointer text-center"
+              className="group relative overflow-hidden border border-neutral-300 hover:border-neutral-500 p-5 md:p-6 flex flex-col cursor-pointer text-center transition-all duration-300"
             >
               {/* Background Color Slide Transition */}
               <div
@@ -116,41 +116,24 @@ export default function HowItWorks() {
               ></div>
 
               {/* Content Container */}
-              <div className="relative z-10 flex flex-col h-full justify-center items-center">
+              <div className="relative z-10 flex flex-col h-full justify-center items-center w-full">
                 {/* Header: Icons */}
-                <div className="flex justify-between items-start mb-5">
+                <div className="flex justify-center items-start mb-3">
                   <div
                     className={`transition-colors duration-300 ${
                       isDarkBg
-                        ? "text-gray-900 group-hover:text-white"
-                        : "text-gray-900 group-hover:text-black"
+                        ? "text-neutral-800 group-hover:text-white"
+                        : "text-neutral-800 group-hover:text-pine"
                     }`}
                   >
                     {card.icon}
                   </div>
-
-                  {/* Top Right Plus Icon fades out on hover */}
-                  {/* <div className="opacity-100 group-hover:opacity-0 transition-opacity duration-300">
-                    <svg
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      strokeWidth="2"
-                      stroke="currentColor"
-                      className="w-5 h-5 text-gray-400"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M12 4.5v15m7.5-7.5h-15"
-                      />
-                    </svg>
-                  </div> */}
                 </div>
 
                 {/* Body: Title and Description */}
                 <div className="mt-2">
                   <h3
-                    className={`text-2xl font-bold tracking-normal font-display mb-3 transition-colors duration-300 ${
+                    className={`text-xl md:text-2xl font-bold tracking-normal font-display mb-1.5 transition-colors duration-300 ${
                       isDarkBg
                         ? "text-pine group-hover:text-white"
                         : "text-pine"
@@ -159,9 +142,9 @@ export default function HowItWorks() {
                     {card.title}
                   </h3>
                   <p
-                    className={`text-lg leading-relaxed font-editorial transition-colors duration-300 ${
+                    className={`text-sm md:text-base leading-relaxed font-editorial transition-colors duration-300 ${
                       isDarkBg
-                        ? "text-neutral-600 group-hover:text-white"
+                        ? "text-neutral-600 group-hover:text-neutral-300"
                         : "text-neutral-600 group-hover:text-neutral-800"
                     }`}
                   >
@@ -169,17 +152,16 @@ export default function HowItWorks() {
                   </p>
                 </div>
 
-                {/* Footer: Learn More Link */}
-                <div className="mt-4 opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 ease-out">
-                  <a
-                    href="#"
+                {/* Footer: Learn More Link (Always visible at low opacity, fades in on hover with arrow translation) */}
+                <div className="mt-3 opacity-60 group-hover:opacity-100 transition-opacity duration-300">
+                  <span
                     className={`font-semibold inline-flex items-center text-sm ${
                       isDarkBg ? "text-white" : "text-black"
                     }`}
                   >
                     Learn More
                     <svg
-                      className="w-4 h-4 ml-1"
+                      className="w-4 h-4 ml-1 transition-transform duration-300 group-hover:translate-x-1"
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
@@ -191,7 +173,7 @@ export default function HowItWorks() {
                         d="M9 5l7 7-7 7"
                       />
                     </svg>
-                  </a>
+                  </span>
                 </div>
               </div>
             </div>
@@ -199,7 +181,7 @@ export default function HowItWorks() {
         })}
       </div>
 
-      <div className="mt-12 justify-self-center">
+      <div className="mt-12 flex justify-center w-full">
         <Button title="Platform walkthrough →" />
       </div>
     </div>

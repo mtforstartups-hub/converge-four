@@ -25,63 +25,63 @@ const members = [
 
 export default function WhoBuiltThis() {
   return (
-    <section className="converge-container mx-auto w-full px-14 bg-canvas py-32 neon-divider">
-      <p className="font-editorial text-lg text-pine uppercase">
+    <section className="converge-container mx-auto w-full px-6 md:px-14 bg-canvas py-16 md:py-24 lg:py-32 neon-divider">
+      <p className="font-editorial text-base md:text-lg text-pine uppercase tracking-wider">
         Who built This
       </p>
-      <h2 className="text-[40px] font-display font-bold tracking-[-0.01em] text-neutral-800">
+      <h2 className="text-3xl sm:text-4xl md:text-[40px] font-display font-bold tracking-[-0.01em] text-neutral-800 mt-2 mb-4 leading-tight">
         Lending expertise, institutional backing.
       </h2>
-      <p className="text-neutral-800 font-editorial text-lg mb-20">
+      <p className="text-neutral-800 font-editorial text-base md:text-lg mb-10 md:mb-16 lg:mb-20 max-w-3xl">
         This is the intelligence layer institutional credit has always required.
       </p>
 
       {/* Team members */}
-      {/* Changed to CSS Grid: grid-cols-1 on mobile, grid-cols-3 on md screens */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-12 w-full">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12 w-full">
         {members.map((member) => (
           // Added h-full to the card wrapper so they all stretch to the tallest card's height
-          <div key={member.id} className="flex flex-col h-full">
-            {/* Added flex-1 to this inner div to push the dark "BRAND" footer to the bottom evenly */}
-            <div className="flex flex-col md:flex-row space-x-0 md:space-x-4 space-y-4 md:space-y-0 bg-surface p-8 flex-1">
-              <Image
-                src="/person-placeholder.png"
-                alt="Team Member"
-                width={120}
-                height={120}
-                className="object-contain self-start"
-              />
-              <div className="flex flex-col gap-2 justify-center">
-                <div className="border-b-2 border-neutral-900 max-w-fit">
-                  <h3 className="text-xl font-display uppercase text-pine">
+          <div key={member.id} className="flex flex-col h-full border border-neutral-200 bg-surface hover:shadow-md transition-shadow duration-300">
+            {/* Stacks vertically with centered elements for a premium layout */}
+            <div className="flex flex-col items-center text-center p-6 md:p-8 flex-1">
+              <div className="relative w-24 h-24 sm:w-28 sm:h-28 mb-6 overflow-hidden rounded-full border-2 border-pine/10 bg-neutral-50 flex-shrink-0">
+                <Image
+                  src="/person-placeholder.png"
+                  alt="Team Member"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <div className="flex flex-col gap-2 items-center w-full">
+                <div className="border-b-2 border-neutral-900 pb-1 max-w-fit mb-1">
+                  <h3 className="text-lg sm:text-xl font-display font-bold uppercase text-pine">
                     {member.title}
                   </h3>
                 </div>
-                <p>{member.designation}</p>
-                <p>{member.experience}</p>
+                <p className="text-sm font-semibold text-neutral-800">{member.designation}</p>
+                <p className="text-xs sm:text-sm text-neutral-600 leading-relaxed mt-2">{member.experience}</p>
               </div>
             </div>
 
-            {/* Footer remains at the bottom */}
-            <div className="bg-pine text-white flex flex-row p-4 space-x-4 justify-between mt-auto">
+            {/* Footer remains at the bottom - Grid based to prevent horizontal overflow */}
+            <div className="bg-pine text-white grid grid-cols-4 gap-1 p-3 text-center text-[10px] sm:text-xs uppercase tracking-wider font-bold mt-auto">
               {Array(4)
                 .fill("BRAND")
                 .map((brand, idx) => (
-                  <div key={idx}> {brand}</div>
+                  <div key={idx}>{brand}</div>
                 ))}
             </div>
           </div>
         ))}
       </div>
 
-      <div className="text-[40px] font-display font-bold tracking-[-0.01em] text-neutral-800 mt-24 mb-12">
+      <div className="text-2xl sm:text-3xl md:text-[40px] font-display font-bold tracking-[-0.01em] text-neutral-800 mt-16 md:mt-24 mb-6 md:mb-12 leading-tight">
         Trusted by leaders across the value chain
       </div>
-      <div className="bg-surface w-full grid grid-cols-5 gap-12 p-8 mb-16">
+      <div className="bg-surface w-full grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-12 p-6 md:p-8 mb-10 md:mb-16 text-center text-neutral-400 font-bold uppercase tracking-widest text-xs sm:text-sm">
         {Array(4)
           .fill("BRAND")
           .map((brand, idx) => (
-            <div key={idx}> {brand}</div>
+            <div key={idx}>{brand}</div>
           ))}
       </div>
       <Button title="Know More" />

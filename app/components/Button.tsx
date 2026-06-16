@@ -18,13 +18,13 @@ export default function Button({
     <button
       className={`
           group relative overflow-hidden
-          px-6 h-11 
+          px-4 md:px-6 h-10 md:h-11 
           ${variants[variant]}
           font-medium 
           shadow-sm
           transition-all duration-500 ease-out
           hover:shadow-lg
-          active:scale-95 active:shadow-sm font-sans tracking-[0.02em] text-xl
+          active:scale-95 active:shadow-sm font-sans tracking-[0.02em] text-base md:text-xl
         `}
     >
       {/* The "Track" that holds both words and moves up on hover */}
