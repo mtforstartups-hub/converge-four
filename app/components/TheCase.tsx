@@ -89,15 +89,11 @@ export default function TheCase() {
 
     const timer = setInterval(() => {
       setActiveMetric((prev) => (prev + 1) % 3);
-    }, 2000);
+    }, 1500);
     return () => clearInterval(timer);
   }, [isHovered]);
   return (
-    <section
-      className="converge-container mx-auto w-full px-6 md:px-14 bg-canvas py-16 md:py-24 neon-divider"
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-    >
+    <section className="converge-container mx-auto w-full px-6 md:px-14 bg-canvas py-16 md:py-24 neon-divider">
       <p className="font-editorial text-base md:text-lg text-pine uppercase tracking-wider">
         The Case
       </p>
@@ -109,9 +105,13 @@ export default function TheCase() {
         to reach them.
       </p>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 mt-12 md:mt-16 lg:mt-24">
+      <div
+        className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 mt-12 md:mt-16 lg:mt-24"
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+      >
         {/* Traditional Systems (Today & Stack Limitations) */}
-        <div className="border border-neutral-300 hover:border-neutral-900 transition-all duration-300 bg-canvas/30 flex flex-col overflow-hidden shadow-sm">
+        <div className="border border-neutral-300 hover:border-neutral-900 transition-all duration-300 bg-surface flex flex-col overflow-hidden shadow-sm">
           {/* Top Section */}
           <div className="p-6 sm:p-10 lg:p-14 flex flex-col">
             {/* Panel Header */}
@@ -125,7 +125,7 @@ export default function TheCase() {
             </div>
 
             {/* Metrics Carousel */}
-            <div className="relative min-h-[160px] sm:min-h-[130px] lg:min-h-[112px]">
+            <div className="relative min-h-40 sm:min-h-32.5 lg:min-h-28">
               {todayMetrics.map((metric, i) => (
                 <div
                   key={i}
@@ -235,7 +235,7 @@ export default function TheCase() {
             </div>
 
             {/* Metrics Carousel */}
-            <div className="relative min-h-[160px] sm:min-h-[130px] lg:min-h-[112px]">
+            <div className="relative min-h-40 sm:min-h-32.5 lg:min-h-28">
               {convergeMetrics.map((metric, i) => (
                 <div
                   key={i}

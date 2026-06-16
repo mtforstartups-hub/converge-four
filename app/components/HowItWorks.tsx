@@ -20,7 +20,7 @@ const cardsData = [
     id: 2,
     title: "Reconciliation",
     description: "Evidence prioritized by source authority.",
-    bgColor: "bg-neutral-900",
+    bgColor: "bg-pine",
     icon: <FileCheck className="size-15" strokeWidth={1.5} />,
   },
   {
@@ -34,7 +34,7 @@ const cardsData = [
     id: 4,
     title: "Auditability",
     description: "Fully traceable outputs for committee review.",
-    bgColor: "bg-neutral-900",
+    bgColor: "bg-pine",
     icon: <ShieldCheck className="size-15" strokeWidth={1.5} />,
   },
 ];
@@ -56,7 +56,7 @@ export default function HowItWorks() {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {cardsData.map((card) => {
           // Check if the current card has the dark background for conditional hover states
-          const isDarkBg = card.bgColor === "bg-neutral-900";
+          const isDarkBg = card.bgColor === "bg-pine";
 
           return (
             <div
@@ -122,7 +122,7 @@ export default function HowItWorks() {
         })}
       </div>
 
-      <div className="mt-12 flex justify-center w-full">
+      <div className="mt-12 flex justify-end w-full">
         <Button title="Platform walkthrough →" />
       </div>
     </div>
