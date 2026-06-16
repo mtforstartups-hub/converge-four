@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import Button from "./Button";
 
 export default function Header() {
@@ -58,53 +59,71 @@ export default function Header() {
         isScrolled || isMenuOpen ? "bg-surface" : "bg-transparent"
       }`}
     >
-      <div className="flex justify-between items-center py-4">
-        <Image
-          src="/logo.svg"
-          alt="converge logo"
-          width={160}
-          height={90}
-          className="w-32 md:w-40 h-auto"
-          priority
-        />
-        
-        {/* Desktop Navigation */}
+      <div className="flex items-center py-4 w-full">
+        {/* Left Section: Logo */}
+        <div className="flex flex-1 justify-start">
+          <Image
+            src="/logo.svg"
+            alt="converge logo"
+            width={160}
+            height={90}
+            className="w-32 md:w-40 h-auto cursor-pointer"
+            priority
+          />
+        </div>
+
+        {/* Center Section: Navigation */}
         <nav className="hidden md:block font-sans tracking-[0.02em] text-base lg:text-xl font-medium text-neutral-800">
           <ul className="flex space-x-6 lg:space-x-8">
-            <li className="cursor-pointer hover:text-pine transition-colors">Platform</li>
-            <li className="cursor-pointer hover:text-pine transition-colors">Intelligence Roles</li>
-            <li className="cursor-pointer hover:text-pine transition-colors">About</li>
+            <li className="cursor-pointer hover:text-pine transition-colors">
+              Platform
+            </li>
+            <li className="cursor-pointer hover:text-pine transition-colors">
+              Intelligence Roles
+            </li>
+            <li className="cursor-pointer hover:text-pine transition-colors">
+              About
+            </li>
           </ul>
         </nav>
 
-        {/* Desktop Call to Action */}
-        <div className="hidden md:block">
-          <Button title="Talk to Us" />
-        </div>
+        {/* Right Section: CTA & Mobile Menu */}
+        <div className="flex flex-1 justify-end items-center">
+          {/* Desktop Call to Action */}
+          <div className="hidden md:flex items-center space-x-6">
+            <Link
+              href="/login"
+              className="font-sans tracking-[0.02em] text-base lg:text-xl font-medium text-neutral-800 hover:text-pine transition-colors whitespace-nowrap"
+            >
+              Log in
+            </Link>
+            <Button title="Talk to Us" />
+          </div>
 
-        {/* Mobile Hamburger Menu Button */}
-        <button
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
-          className="md:hidden flex flex-col justify-center items-center w-10 h-10 gap-1.5 focus:outline-none z-50 cursor-pointer"
-          aria-expanded={isMenuOpen}
-          aria-label="Toggle menu"
-        >
-          <span
-            className={`h-[2px] w-6 bg-neutral-800 transition-all duration-300 ease-in-out rounded-full ${
-              isMenuOpen ? "rotate-45 translate-y-[8px]" : ""
-            }`}
-          />
-          <span
-            className={`h-[2px] w-6 bg-neutral-800 transition-all duration-300 ease-in-out rounded-full ${
-              isMenuOpen ? "opacity-0 scale-x-0" : ""
-            }`}
-          />
-          <span
-            className={`h-[2px] w-6 bg-neutral-800 transition-all duration-300 ease-in-out rounded-full ${
-              isMenuOpen ? "-rotate-45 -translate-y-[8px]" : ""
-            }`}
-          />
-        </button>
+          {/* Mobile Hamburger Menu Button */}
+          <button
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            className="md:hidden flex flex-col justify-center items-center w-10 h-10 gap-1.5 focus:outline-none z-50 cursor-pointer ml-auto"
+            aria-expanded={isMenuOpen}
+            aria-label="Toggle menu"
+          >
+            <span
+              className={`h-[2px] w-6 bg-neutral-800 transition-all duration-300 ease-in-out rounded-full ${
+                isMenuOpen ? "rotate-45 translate-y-[8px]" : ""
+              }`}
+            />
+            <span
+              className={`h-[2px] w-6 bg-neutral-800 transition-all duration-300 ease-in-out rounded-full ${
+                isMenuOpen ? "opacity-0 scale-x-0" : ""
+              }`}
+            />
+            <span
+              className={`h-[2px] w-6 bg-neutral-800 transition-all duration-300 ease-in-out rounded-full ${
+                isMenuOpen ? "-rotate-45 -translate-y-[8px]" : ""
+              }`}
+            />
+          </button>
+        </div>
       </div>
 
       {/* Mobile Menu Panel */}
@@ -138,7 +157,16 @@ export default function Header() {
               </li>
             </ul>
           </nav>
-          <div className="pt-4 flex justify-start" onClick={() => setIsMenuOpen(false)}>
+          <div
+            className="pt-4 flex items-center space-x-6 justify-start"
+            onClick={() => setIsMenuOpen(false)}
+          >
+            <Link
+              href="/login"
+              className="font-sans tracking-[0.02em] text-xl md:text-2xl font-medium text-neutral-800 hover:text-pine transition-colors"
+            >
+              Log in
+            </Link>
             <Button title="Talk to Us" />
           </div>
         </div>
@@ -146,4 +174,3 @@ export default function Header() {
     </header>
   );
 }
-
