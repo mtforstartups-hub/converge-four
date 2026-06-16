@@ -51,7 +51,7 @@ const brands = [
 
 export default function WhoBuiltThis() {
   return (
-    <section className="converge-container mx-auto w-full px-6 md:px-14 bg-canvas py-16 md:py-24 lg:py-32 neon-divider">
+    <section className="converge-container mx-auto w-full px-6 md:px-14 bg-canvas py-16 md:py-24 neon-divider">
       <p className="font-editorial text-base md:text-lg text-pine uppercase tracking-wider">
         Who built This
       </p>

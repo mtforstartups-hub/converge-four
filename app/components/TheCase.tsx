@@ -90,8 +90,10 @@ export default function TheCase() {
     return () => clearInterval(timer);
   }, []);
   return (
-    <section className="converge-container mx-auto w-full px-6 md:px-14 bg-canvas py-16 md:py-24 lg:py-32 neon-divider">
-      <p className="font-editorial text-base md:text-lg text-pine uppercase tracking-wider">The Case</p>
+    <section className="converge-container mx-auto w-full px-6 md:px-14 bg-canvas py-16 md:py-24 neon-divider">
+      <p className="font-editorial text-base md:text-lg text-pine uppercase tracking-wider">
+        The Case
+      </p>
       <h2 className="text-3xl sm:text-4xl md:text-[40px] font-display font-bold tracking-[-0.01em] text-neutral-800 mt-2 mb-4 leading-tight">
         Manual credit analysis is an operational bottleneck.
       </h2>
@@ -100,17 +102,17 @@ export default function TheCase() {
         to reach them.
       </p>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 lg:gap-16 mt-12 md:mt-16 lg:mt-24">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 mt-12 md:mt-16 lg:mt-24">
         {/* Traditional Systems (Today & Stack Limitations) */}
         <div className="border border-neutral-300 hover:border-neutral-900 transition-all duration-300 bg-canvas/30 flex flex-col overflow-hidden shadow-sm">
           {/* Top Section */}
           <div className="p-6 sm:p-10 lg:p-14 flex flex-col">
             {/* Panel Header */}
             <div className="flex items-center justify-between pb-6 border-b border-neutral-300 mb-8">
-              <span className="font-ui text-xs font-semibold tracking-wider text-[#8a8579] uppercase">
+              <span className="font-ui text-base lg:text-lg font-semibold tracking-wider text-neutral-400 uppercase">
                 Today
               </span>
-              <span className="font-editorial text-xs italic text-[#8a8579]">
+              <span className="font-editorial text-base lg:text-lg italic text-neutral-400">
                 here&apos;s the issue
               </span>
             </div>
@@ -201,7 +203,7 @@ export default function TheCase() {
 
             {/* Panel Footer */}
             <div className="border-t border-mist/60 pt-6 mt-auto">
-              <p className="font-ui text-[11px] font-semibold tracking-widest text-[#8a8579] uppercase">
+              <p className="font-editorial text-base lg:text-lg text-neutral-400 uppercase">
                 Each does part of the job. None forms the understanding.
               </p>
             </div>
@@ -216,11 +218,11 @@ export default function TheCase() {
           <div className="p-6 sm:p-10 lg:p-14 relative z-10 flex flex-col">
             {/* Panel Header */}
             <div className="flex items-center justify-between pb-6 border-b border-pine/20 mb-8">
-              <span className="inline-flex items-center gap-1.5 font-ui text-xs font-semibold tracking-wider text-pine uppercase">
+              <span className="inline-flex items-center gap-1.5 font-ui text-base lg:text-lg font-semibold tracking-wider text-pine uppercase">
                 <span className="w-1.5 h-1.5 rounded-full bg-pine animate-pulse" />
                 With Converge
               </span>
-              <span className="font-editorial text-xs italic text-pine">
+              <span className="font-editorial text-base lg:text-lg italic text-pine">
                 here&apos;s what it becomes
               </span>
             </div>
@@ -309,7 +311,7 @@ export default function TheCase() {
 
             {/* Panel Footer */}
             <div className="border-t border-pine/10 pt-6 mt-auto">
-              <p className="font-ui text-[11px] font-semibold tracking-widest text-pine uppercase">
+              <p className="font-editorial text-base lg:text-lg text-pine uppercase">
                 The understanding, formed — faster, with fewer misses.
               </p>
             </div>

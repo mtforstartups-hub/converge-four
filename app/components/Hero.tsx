@@ -3,9 +3,9 @@ import Button from "./Button";
 
 export default function Hero() {
   return (
-    <section className="converge-container mx-auto w-full px-6 md:px-14 min-h-162.5 md:min-h-187.5 lg:min-h-200 xl:min-h-237.5 flex items-center bg-canvas relative overflow-hidden">
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12 items-center w-full pt-28 pb-16 md:pt-36 md:pb-24 lg:py-20 px-2 relative z-10">
-        <div className="flex flex-col space-y-8 text-neutral-800 col-span-2">
+    <section className="converge-container mx-auto w-full px-6 md:px-14 min-h-190 flex items-center bg-canvas relative overflow-hidden">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center w-full pt-28 pb-16 md:pt-36 md:pb-24 lg:py-20 px-2 relative z-10">
+        <div className="flex flex-col space-y-8 text-neutral-800">
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold font-display tracking-[-0.02em] leading-[1.1]">
             Intelligence infrastructure for{" "}
             <span className="text-pine">institutional lending.</span>
@@ -23,7 +23,7 @@ export default function Hero() {
           </div>
         </div>
 
-        <div className="relative w-full aspect-16/10 max-w-lg md:max-w-2xl lg:max-w-none justify-self-start lg:justify-self-end lg:absolute left-[-10%] lg:left-[70%] lg:top-1/2 lg:-translate-y-1/2 lg:w-200">
+        <div className="lg:justify-self-end">
           {/* Laptop SVG */}
           <Image
             src="/LaptopHero.svg"
