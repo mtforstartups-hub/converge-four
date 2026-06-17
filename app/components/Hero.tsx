@@ -15,10 +15,10 @@ export default function Hero() {
           </FadeIn>
           <FadeIn delay={200}>
             <p className="text-base md:text-lg text-neutral-600 leading-relaxed font-editorial">
-              Institutional loans necessitate dozens of discrete risk evaluations.
-              Traditionally, these facts are manually reconciled and judged.
-              Converge automates this reasoning layer, delivering structured,
-              source-verified findings ready for review.
+              Institutional loans necessitate dozens of discrete risk
+              evaluations. Traditionally, these facts are manually reconciled
+              and judged. Converge automates this reasoning layer, delivering
+              structured, source-verified findings ready for review.
             </p>
           </FadeIn>
 
@@ -30,8 +30,8 @@ export default function Hero() {
           </FadeIn>
         </div>
 
-        <FadeIn delay={400} direction="left" className="lg:justify-self-end">
-          {/* Laptop SVG */}
+        {/* Laptop SVG */}
+        {/* <FadeIn delay={400} direction="left" className="lg:justify-self-end">
           <Image
             src="/LaptopHero.svg"
             alt="Laptop Asset Hero"
@@ -39,7 +39,7 @@ export default function Hero() {
             height={550}
             priority
           />
-        </FadeIn>
+        </FadeIn> */}
       </div>
     </section>
   );
